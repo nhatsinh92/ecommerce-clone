@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mua · bản thử giao diện</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="store.css?v=3">
+</head>
+<!-- Throwaway layout sketch. Not the store app. -->
+<body data-layout="rail">
+  <div class="switcher" id="switcher">
+    <strong>Bản thử</strong>
+    <span class="switcher-note">Không lưu dữ liệu. Phím 1, 2, 3.</span>
+    <button type="button" data-layout-btn="rail" aria-pressed="true">A · Rail</button>
+    <button type="button" data-layout-btn="shelf">B · Shelf</button>
+    <button type="button" data-layout-btn="search">C · Search</button>
+  </div>
+  <div id="app"></div>
+  <script src="store.js?v=4"></script>
+</body>
+</html>
