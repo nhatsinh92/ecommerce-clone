@@ -5,6 +5,7 @@ import CategoryMark from '@/components/CategoryMark'
 import Header from '@/components/Header'
 import { getProduct, percentOff } from '@/lib/catalog'
 import { formatCount, formatVnd } from '@/lib/format'
+import AddToCart from './AddToCart'
 
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
   const product = await getProduct((await params).id)
@@ -43,26 +44,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
               <dd>Tiền mặt khi nhận hàng</dd>
             </dl>
             <p className="blurb">{product.blurb}</p>
-            <div className="qty-row">
-              <span>Số lượng</span>
-              <div className="stepper">
-                <button type="button" aria-label="Giảm">
-                  −
-                </button>
-                <b>1</b>
-                <button type="button" aria-label="Tăng">
-                  +
-                </button>
-              </div>
-            </div>
-            <div className="btn-row">
-              <button className="btn btn-ghost" type="button">
-                Thêm vào giỏ
-              </button>
-              <button className="btn btn-primary" type="button">
-                Mua ngay
-              </button>
-            </div>
+            <AddToCart productId={product.id} />
           </div>
         </div>
       </div>

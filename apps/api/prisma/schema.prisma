@@ -29,6 +29,26 @@ model Product {
   sold       Int
   rating     Decimal  @db.Decimal(2, 1)
   blurb      String
+  cartLines  CartLine[]
 
   @@map("products")
+}
+
+model Cart {
+  id    String     @id @default(uuid())
+  lines CartLine[]
+
+  @@map("carts")
+}
+
+model CartLine {
+  cartId    String   @map("cart_id")
+  productId String   @map("product_id")
+  quantity  Int
+  addedAt   DateTime @default(now()) @map("added_at")
+  cart      Cart     @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@id([cartId, productId])
+  @@map("cart_lines")
 }

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { getCart } from '@/app/cart/cart'
 
 function BagIcon() {
   return (
@@ -18,7 +19,8 @@ function UserIcon() {
   )
 }
 
-export default function Header({ q }: { q: string }) {
+export default async function Header({ q }: { q: string }) {
+  const { count } = await getCart()
   return (
     <header className="top">
       <div className="top-row">
@@ -37,12 +39,12 @@ export default function Header({ q }: { q: string }) {
           <button className="nav-btn" type="button">
             <UserIcon /> Đăng nhập
           </button>
-          <button className="nav-btn" type="button">
+          <Link className="nav-btn" href="/cart">
             <BagIcon /> Giỏ hàng
-            <span className="badge-count" data-empty="true">
-              0
+            <span className="badge-count" data-empty={count === 0}>
+              {count}
             </span>
-          </button>
+          </Link>
         </div>
       </div>
       <div className="loc">
