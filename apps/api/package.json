@@ -1,0 +1,19 @@
+{
+  "name": "@ecomerce-clone/api",
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "postinstall": "prisma generate",
+    "predev": "npm install --no-audit --no-fund",
+    "dev": "npm run seed && node --watch src/server.js",
+    "seed": "node prisma/seed.js",
+    "list-products": "node src/list-products.js",
+    "test": "node --env-file=.env --test --test-concurrency=1 seed.test.js catalog.test.js"
+  },
+  "dependencies": {
+    "@prisma/client": "6.19.3",
+    "prisma": "6.19.3"
+  }
+}
